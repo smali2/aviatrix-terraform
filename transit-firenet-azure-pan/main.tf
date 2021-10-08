@@ -1,10 +1,24 @@
-provider "aviatrixsystems" {
+# Provider Information
+terraform {
+  required_providers {
+    aviatrix = {
+      source = "AviatrixSystems/aviatrix"
+      version = "2.20.0"
+    }
+  }
+}
 
-  username                = var.username
-  password                = var.password
-  controller_ip           = var.controller_ip
-  version                 = "2.2"
-  skip_version_validation = false
+
+# Specify Aviatrix as the provider with these parameters:
+# controller_ip - public IP address of the controller
+# username - login user name, default is admin
+# password - password
+# version - release version # of Aviatrix Terraform provider
+
+provider "aviatrix" {
+    controller_ip = var.controller_ip
+    username = var.username
+    password = var.password
 }
 
 resource "random_integer" "subnet" {
